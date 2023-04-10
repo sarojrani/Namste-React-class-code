@@ -3,9 +3,13 @@
     justify-content: space-between;
     border: 2px solid royalblue;
 }
+.title button{
+    justify-content: end;
+}
 .logo-img{
  width: 100px;
 }
+
 .nav-item > ul{
     display: flex;
     
@@ -52,5 +56,10 @@
     padding: 0px 30px;
     list-style-type: none;
 }
+.search-btn{
+    margin: 5px;
+    cursor:pointer;
+}
+
 
 
