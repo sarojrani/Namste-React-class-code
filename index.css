@@ -8,6 +8,7 @@
 }
 .logo-img{
  width: 100px;
+ padding: 2px;
 }
 
 .nav-item > ul{
@@ -59,6 +60,13 @@
 .search-btn{
     margin: 5px;
     cursor:pointer;
+}
+.shimmer-card{
+    width: 200px;
+    height:250px;
+    background: grey;
+    margin: 10px;
+    /* border:1px solid gray; */
 }
 
 

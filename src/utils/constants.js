@@ -3,3 +3,6 @@ export const CDN_URL=
 
 export const LOGO_URL=
 "https://img.freepik.com/premium-vector/good-food-logo-design_79169-10.jpg"
+
+
+//https://www.swiggy.com/dapi/menu/v4/full?lat=12.9351929&lng=77.62448069999999&menuId="+resId

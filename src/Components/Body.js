@@ -1,7 +1,7 @@
 import ResturentCard from "./ResturentCard";
 // import resList from "../utils/mockdata";
 import { useState,useEffect } from "react";
-import Simmer from "./Shimmer";
+import Shimmer from "./Shimmer";
 
 function filterData(searchtext,allResturent){
     const filterData=allResturent.filter((resturant)=>
@@ -31,11 +31,11 @@ const Body=()=>{
     setFilterdResturent(json?.data?.cards[0]?.data?.data?.cards)
    }
 
-   console.log("render")
-   if(filteredResturent?.length==0) return <h1>No resturant mtach to filter!!</h1>
+//    console.log("render")
+//    if(filteredResturent?.length==0) return <h1>No resturant mtach to filter!!</h1>
    //early return
    if(!allResturent) return null;
-    return (allResturent?.length===0)?<Simmer />:(
+    return (allResturent?.length===0)?<Shimmer />:(
         <>
         <div className="body">
         
