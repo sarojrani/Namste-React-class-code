@@ -1,65 +1,69 @@
 import ResturentCard from "./ResturentCard";
 // import resList from "../utils/mockdata";
-import { useState,useEffect } from "react";
+import { useState, useEffect } from "react";
 import Shimmer from "./Shimmer";
+import { filterData } from "../utils/Helper";
+import useOnline from "../utils/useOnline";
 
-function filterData(searchtext,allResturent){
-    const filterData=allResturent.filter((resturant)=>
-    resturant?.data?.name?.toLowerCase()?.includes(searchtext.toLowerCase())
-    )
-    return filterData;
-}
+const Body = () => {
+  const [allResturent, setAllResturent] = useState([]);
+  const [filteredResturent, setFilterdResturent] = useState([]);
+  const [searchtext, setSearchtext] = useState("");
+  //    console.log(listOfResturent)
 
-const Body=()=>{
-   const [allResturent,setAllResturent]=useState([])
-   const [filteredResturent,setFilterdResturent]=useState([])
-   const [searchtext,setSearchtext]=useState("")
-//    console.log(listOfResturent)
-
-   useEffect(()=>{
+  useEffect(() => {
     // console.log("call  this when dependency changed")
     // console.log("useEffect")
-    fetchData()
-   },[])
+    fetchData();
+  }, []);
 
-   async function fetchData(){
-    const data=await fetch(
-        "https://www.swiggy.com/dapi/restaurants/list/v5?lat=25.5940499&lng=85.1376051&sortBy=RATING&page_type=DESKTOP_WEB_LISTING")
-    let json= await data.json()
+  async function fetchData() {
+    const data = await fetch(
+      "https://www.swiggy.com/dapi/restaurants/list/v5?lat=25.5940499&lng=85.1376051&sortBy=RATING&page_type=DESKTOP_WEB_LISTING"
+    );
+    let json = await data.json();
     // console.log(json)
-    setAllResturent(json?.data?.cards[0]?.data?.data?.cards)
-    setFilterdResturent(json?.data?.cards[0]?.data?.data?.cards)
-   }
+    setAllResturent(json?.data?.cards[0]?.data?.data?.cards);
+    setFilterdResturent(json?.data?.cards[0]?.data?.data?.cards);
+  }
 
-//    console.log("render")
-//    if(filteredResturent?.length==0) return <h1>No resturant mtach to filter!!</h1>
-   //early return
-   if(!allResturent) return null;
-    return (allResturent?.length===0)?<Shimmer />:(
-        <>
-        <div className="body">
-        
+  const isOnline = useOnline();
+  if (!isOnline) {
+    return <h3>offline,check your internet connection!!</h3>;
+  }
+  //    console.log("render")
+  //    if(filteredResturent?.length==0) return <h1>No resturant mtach to filter!!</h1>
+  //early return
+  if (!allResturent) return null;
+  return allResturent?.length === 0 ? (
+    <Shimmer />
+  ) : (
+    <>
+      <div className="body">
         <div className="filter">
-        <input type="text" value={searchtext} onChange={(e)=>setSearchtext(e.target.value)
-        }/>
-            <button className="search-btn" 
+          <input
+            type="text"
+            value={searchtext}
+            onChange={(e) => setSearchtext(e.target.value)}
+          />
+          <button
+            className="search-btn"
             onClick={() => {
-                 const data=filterData(searchtext,allResturent)
-                    setFilterdResturent(data)
-                }} >search</button>
+              const data = filterData(searchtext, allResturent);
+              setFilterdResturent(data);
+            }}
+          >
+            search
+          </button>
         </div>
-        
-            <div className="res-container">
 
-           {
-            filteredResturent.map((resturent)=> (
-              <ResturentCard  key={resturent.data.id} resData={resturent} />)
-            )
-           }
-            
-             </div>
+        <div className="res-container">
+          {filteredResturent.map((resturent) => (
+            <ResturentCard key={resturent.data.id} resData={resturent} />
+          ))}
         </div>
-        </>
-    )
-}
+      </div>
+    </>
+  );
+};
 export default Body;

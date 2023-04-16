@@ -3,10 +3,12 @@ import { useState } from "react";
 // import { LOGO_URL } from "../utils/constants";
 import logo from "../Assets/img.jpg";
 import { Link } from "react-router-dom";
+import useOnline from "../utils/useOnline";
 
 const Header = () => {
   const [isLogedIn, setIsLogedIn] = useState(false);
 
+  const isOnline = useOnline();
   return (
     <div className="header">
       <div className="Logo-style">
@@ -21,10 +23,19 @@ const Header = () => {
           <Link to="/about">
             <li>About</li>
           </Link>
+          
           <li>About Us</li>
           <li>Contact Us</li>
           <li>Cart</li>
+          <Link to="/instamart">
+            <li>instamart</li>
+          </Link>
+          <div>
+          <h1>{isOnline?"👌":"😒"}</h1>
+          </div>
+          
         </ul>
+       
       </div>
       {isLogedIn ? (
         <button onClick={() => setIsLogedIn(false)}>Logout</button>

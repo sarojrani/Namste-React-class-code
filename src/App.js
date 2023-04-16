@@ -1,4 +1,4 @@
-import React from "react";
+import React, { lazy,Suspense } from "react";
 import ReactDOM from "react-dom/client";
 import Header from "./Components/Header";
 import Body from "./Components/Body";
@@ -9,9 +9,14 @@ import Profile from "./Components/ProfileClass";
 // import Profile from "./Components/Profile";
 import ResturentMenu from "./Components/ResturentMenu";
 import { createBrowserRouter, RouterProvider,Outlet } from "react-router-dom";
+import Shimmer from "./Components/Shimmer";
 
 //   https://www.swiggy.com/dapi/restaurants/list/v5?lat=25.5940499&lng=85.1376051&sortBy=RATING&page_type=DESKTOP_WEB_LISTING
 
+//chunking
+//lazy loading
+//dynamic bundling
+const Instamart=lazy(()=>import("./Components/Instamart"))
 const AppLayout = () => {
   return (
     <div className="layout">
@@ -47,6 +52,10 @@ const AppRouter = createBrowserRouter([
               path: "/restaurant/:resId",
                 element: <ResturentMenu />,
                },
+               {
+                path:"/instamart",
+                element:<Suspense fallback={<Shimmer/>}><Instamart /></Suspense>
+              }
           
     ]
   },
