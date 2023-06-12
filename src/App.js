@@ -22,7 +22,7 @@ import store from "./utils/store";
 //chunking
 //lazy loading
 //dynamic bundling
-const Instamart=lazy(()=>import("./Components/About"))
+// const About=lazy(()=>import("./Components/About"))
 const AppLayout = () => {
 const [user,setUser]=useState({
   name:"saroj kumari",
@@ -56,7 +56,8 @@ const AppRouter = createBrowserRouter([
           },
         {
             path: "/about",
-            element:<Suspense fallback={<Shimmer/>}><About /></Suspense>
+            // element:<Suspense fallback={<Shimmer/>}><About /></Suspense>
+            element:<About/>
           },
           {
               path: "/restaurant/:resId",
