@@ -18,7 +18,7 @@ const {user}=useContext(UserContext)
 const cartItems=useSelector(store=>store.cart.items)
 
   return (
-    <div className="flex justify-between bg-pink-300 shadow-lg sm:bg-blue-300">
+    <div className="flex justify-between bg-pink-300 shadow-lg sm:bg-blue-300 p-3">
       <div className="Logo-style">
         <img className="h-24 p-2" src={logo} />
       </div>
@@ -41,8 +41,8 @@ const cartItems=useSelector(store=>store.cart.items)
           </Link>
           
           <div>
-          <h1>{isOnline?"👌":"😒"}</h1>
-         <h1>{user.name}</h1> 
+          <h1>{isOnline? "👌": "😒" }</h1>
+         
           </div>
           
         </ul>
@@ -53,7 +53,8 @@ const cartItems=useSelector(store=>store.cart.items)
         <button onClick={() => setIsLogedIn(false)}>Logout</button>
       ) : (
         <button onClick={() => setIsLogedIn(true)}>Login</button>
-      )}
+      ) }
+      
     </div>
   );
 };

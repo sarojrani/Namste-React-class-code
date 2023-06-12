@@ -47,13 +47,13 @@ const Body = () => {
         <div className="p-5 bg-gray-300 my-5">
           <input
             type="text"
-            className="focus:bg-blue-400 p-2 m-2"
+            className="focus:bg-blue-400 rounded-xl p-2"
             value={searchtext}
             placeholder="search"
             onChange={(e) => setSearchtext(e.target.value)}
           />
           <button
-            className="search-btn p-1 m-2 bg-purple-500 "
+            className="search-btn p-1 bg-purple-500 rounded-2xl "
             onClick={() => {
               const data = filterData(searchtext, allResturent);
               setFilterdResturent(data);
@@ -61,17 +61,8 @@ const Body = () => {
           >
             search
           </button>
-          <input
-            value={user.name}
-            onChange={(e) => {
-              setUser({
-                name: e.target.value,
-                email: "saru@123",
-              });
-            }}
-          >
-            
-          </input>
+          
+        
         </div>
 
         <div className="flex p-10  flex-wrap  hover:bg-gray-100">

@@ -29,14 +29,14 @@ class About extends Component {
   render() {
     console.log(" parent-render");
     return (
-      <>
+      <div className="font-bold border border-gray-600 p-11">
         <p>this is about page</p>
         {/* <UserContext.Consumer>
           {(value)=console.log(value)}
         </UserContext.Consumer> */}
         <ProfileFunction name={"first child"} />
         
-      </>
+      </div>
     );
   }
 }
