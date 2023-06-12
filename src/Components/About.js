@@ -2,6 +2,9 @@
 // import Profile from "./ProfileClass";
 import { Component } from "react";
 import ProfileFunction from "./Profile";
+// import { useContext } from "react";
+// import UserContext from "../utils/userContext";
+
 // const About = () => {
 //   return (
 //     <>
@@ -28,6 +31,9 @@ class About extends Component {
     return (
       <>
         <p>this is about page</p>
+        {/* <UserContext.Consumer>
+          {(value)=console.log(value)}
+        </UserContext.Consumer> */}
         <ProfileFunction name={"first child"} />
         
       </>
